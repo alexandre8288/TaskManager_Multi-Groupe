@@ -1,0 +1,107 @@
+@import "../../../../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../../../../scss/utilities/mixins";
+
+.header {
+  @include flex-space-between;
+  align-items: center;
+
+  h1 {
+    font-family: "Poppins", sans-serif !important;
+    font-weight: bold !important;
+  }
+}
+
+.button-wrapper {
+  button {
+    width: 90px;
+  }
+}
+
+.code {
+  h3 {
+    color: var(--theme-primary) !important;
+  }
+}
+
+.page-container {
+  display: flex;
+  justify-content: center;
+}
+
+.starting-info {
+  @include flex-center;
+  align-items: center;
+  margin-bottom: 1em;
+  text-align: center;
+
+  @include media-breakpoint-up(md) {
+    margin-bottom: 4em;
+  }
+}
+
+.start-date,
+.end-date,
+.code {
+  @include flex-column;
+}
+
+.general-info {
+  @include flex-space-between;
+  gap: 1em;
+  margin-bottom: 1em;
+
+  @include media-breakpoint-up(md) {
+    justify-content: center;
+    margin-bottom: 4em;
+  }
+
+  .card-blue {
+    @include flex-column;
+    width: 100%;
+    align-items: center;
+    border-radius: 20px;
+    padding: 16px;
+    background-color: var(--theme-primary);
+
+    @include media-breakpoint-up(md) {
+      width: 20em;
+    }
+
+    h2,
+    p {
+      color: white !important;
+    }
+
+    h2 {
+      font-size: 40px !important;
+    }
+  }
+}
+
+.progress-bar-container {
+  margin: 2em 0;
+}
+
+.members {
+  margin-top: 1em;
+}
+
+.member-card {
+  @include flex-space-between;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 0.5em;
+
+  p {
+    color: var(--theme-primary) !important;
+  }
+}
+
+.trash-button {
+  width: 22px;
+  height: 22px;
+}
+
+.description {
+  min-height: 6em;
+}

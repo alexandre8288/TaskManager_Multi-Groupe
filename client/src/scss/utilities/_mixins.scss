@@ -1,0 +1,227 @@
+// FLEXBOX MIXINS
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-center-column {
+  @include flex-center;
+  flex-direction: column;
+}
+
+@mixin flex-center-vert {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-center-vert-column {
+  @include flex-center-vert;
+  flex-direction: column;
+}
+
+@mixin flex-center-horiz {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin flex-center-horiz-column {
+  @include flex-center-horiz;
+  flex-direction: column;
+}
+
+@mixin flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin flex-space-between-column {
+  @include flex-space-between;
+  flex-direction: column;
+}
+
+@mixin flex-space-between-center {
+  @include flex-space-between;
+  align-items: center;
+}
+
+@mixin flex-space-around {
+  display: flex;
+  justify-content: space-around;
+}
+
+@mixin flex-space-evenly {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+@mixin flex-space-evenly-center {
+  @include flex-space-evenly;
+  align-items: center;
+}
+
+@mixin flex-space-evenly-column {
+  @include flex-space-evenly;
+  flex-direction: column;
+}
+
+@mixin flex-center-horiz-column {
+  @include flex-center-horiz;
+  flex-direction: column;
+}
+
+@mixin flex-column-space-between {
+  @include flex-column;
+  justify-content: space-between;
+}
+
+@mixin flex-column-space-around {
+  @include flex-column;
+  justify-content: space-around;
+}
+
+@mixin flex-start {
+  display: flex;
+  align-items: flex-start;
+}
+
+@mixin flex-end {
+  display: flex;
+  align-items: flex-end;
+}
+
+@mixin flex-start-column {
+  @include flex-start;
+  flex-direction: column;
+}
+
+@mixin flex-start-horiz {
+  display: flex;
+  justify-content: flex-start;
+}
+
+@mixin flex-start-center {
+  @include flex-start;
+  justify-content: center;
+}
+
+@mixin flex-end-horiz {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@mixin flex-end-column {
+  @include flex-end;
+  flex-direction: column;
+}
+
+@mixin flex-end-center {
+  @include flex-end;
+  justify-content: center;
+}
+
+@mixin flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@mixin flex-wrap-column {
+  @include flex-wrap;
+  flex-direction: column;
+}
+
+@mixin flex-wrap-center {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin wrap-center-vert {
+  @include flex-center-vert;
+  flex-wrap: wrap;
+}
+
+@mixin wrap-center-horiz {
+  @include flex-center-horiz;
+  flex-wrap: wrap;
+}
+
+@mixin flex-nowrap {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+@mixin grid-center {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin grid-center-vert {
+  display: grid;
+  align-items: center;
+}
+
+@mixin grid-center-horiz {
+  display: grid;
+  justify-content: center;
+}
+
+// POSITIONING MIXINS
+
+@mixin position-coords($top: auto, $right: auto, $bottom: auto, $left: auto) {
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+// BOX MODEL MIXINS
+
+@mixin full-height {
+  height: 100%;
+  min-height: 100vh;
+}
+
+@mixin full-view {
+  width: 100vw;
+  height: 100vh;
+}
+
+@mixin w-h($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin w-h-min($width, $height) {
+  min-width: $width;
+  min-height: $height;
+}
+
+@mixin w-h-max($width, $height) {
+  max-width: $width;
+  max-height: $height;
+}
+
+// OVERFLOW MIXINS
+@mixin of-x-only {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+@mixin of-y-only {
+  overflow-x: hidden;
+  overflow-y: auto;
+}

@@ -1,0 +1,72 @@
+* {
+  font-family: "Poppins", sans-serif;
+  color: var(--theme-paragraph);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  word-wrap: break-word;
+}
+
+html,
+body {
+  background: var(--theme-background) !important;
+  font-family: "Poppins", sans-serif;
+}
+
+h1 {
+  font-family: "Righteous", sans-serif;
+  font-size: 32px !important;
+  color: var(--theme-primary) !important;
+}
+
+h2 {
+  font-size: 24px !important;
+  font-weight: 700 !important;
+}
+
+h3 {
+  font-size: 20px !important;
+  font-weight: 600 !important;
+}
+
+h2,
+h3 {
+  color: var(--theme-black) !important;
+}
+
+h4 {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+}
+
+p {
+  font-size: 14px !important;
+  color: var(--theme-paragraph) !important;
+  margin-bottom: 0 !important;
+
+  &.tag {
+    font-weight: 600 !important;
+    color: var(--theme-primary) !important;
+  }
+}
+
+b {
+  font-size: 14px !important;
+}
+
+small {
+  font-size: 12px !important;
+  font-weight: 400;
+}
+
+a {
+  font-size: 10px !important;
+  color: var(--theme-primary-light) !important;
+  text-decoration: none !important;
+
+  &:hover {
+    color: var(--theme-primary) !important;
+    text-decoration: underline !important;
+  }
+}

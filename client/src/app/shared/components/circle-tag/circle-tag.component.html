@@ -1,0 +1,7 @@
+<!-- circle.component.html -->
+<div class="outer-circle" [ngStyle]="{ 'border-color': outsideColor }">
+  <div
+    class="inner-circle"
+    [ngStyle]="{ 'background-color': insideColor ? insideColor : outsideColor }"
+  ></div>
+</div>

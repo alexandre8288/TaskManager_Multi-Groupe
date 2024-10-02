@@ -1,0 +1,80 @@
+@import "../../../../node_modules/bootstrap/scss/bootstrap.scss";
+
+.page-wrapper {
+  height: 90vh;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-content {
+  width: 70%;
+}
+
+.page-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--theme-primary);
+  margin: -1em;
+  padding: 3em 1em;
+  position: relative;
+
+  @include media-breakpoint-up(md) {
+    margin: -1em -4em;
+  }
+
+  h4 {
+    margin: 0;
+    text-align: center;
+    flex: 1;
+    color: white;
+  }
+
+  button {
+    &.back {
+      position: absolute;
+      left: 1em;
+    }
+
+    &.edit {
+      position: absolute;
+      right: 1em;
+    }
+
+    img {
+      width: 15px;
+      height: 15px;
+    }
+  }
+}
+
+.user-info,
+.settings-form {
+  margin-top: 2em;
+}
+
+.user-info {
+  label {
+    color: var(--theme-primary);
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+  }
+}
+
+.button-wrapper {
+  button {
+    margin-top: 1em;
+  }
+}
+
+.btn-red {
+  border: var(--theme-red);
+  background-color: var(--theme-red);
+  color: white;
+}

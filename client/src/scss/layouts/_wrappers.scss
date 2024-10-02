@@ -1,0 +1,23 @@
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+
+.page-wrapper {
+  padding: 1em;
+
+  @include media-breakpoint-up(md) {
+    padding: 1em 4em;
+  }
+}
+
+.header {
+  margin-bottom: 2em;
+}
+
+.page-section {
+  margin-top: 3em;
+}
+
+.page-content {
+  @include media-breakpoint-down(sm) {
+    width: 100%;
+  }
+}

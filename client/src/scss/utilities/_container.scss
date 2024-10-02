@@ -1,0 +1,15 @@
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+
+.hide-desktop {
+  display: block;
+  @include media-breakpoint-up(md) {
+    display: none;
+  }
+}
+
+.hide-mobile {
+  display: none;
+  @include media-breakpoint-up(md) {
+    display: block;
+  }
+}

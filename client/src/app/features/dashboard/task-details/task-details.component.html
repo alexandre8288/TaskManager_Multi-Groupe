@@ -1,0 +1,194 @@
+<div class="page-wrapper">
+  <div class="header">
+    <img src="assets/icons/icon-header.svg" alt="" />
+    <h1>{{ taskData.title | titlecase }}</h1>
+    <div class="button-wrapper">
+      <button
+        class="button-primary button-header"
+        *ngIf="!isEditMode"
+        (click)="toggleEditMode()"
+      >
+        Edit
+      </button>
+      <button
+        class="button-primary button-header"
+        *ngIf="isEditMode"
+        (click)="toggleEditMode()"
+      >
+        Exit
+      </button>
+    </div>
+  </div>
+
+  <div class="page-container">
+    <div class="page-content">
+      <div class="starting-info">
+        <div class="start-date">
+          <b>start</b>
+          <small>{{ taskData.startDate | date : "MMM d yyyy" }}</small>
+        </div>
+        <div class="end-date">
+          <b>End</b>
+          <small>{{ taskData.endDate | date : "MMM d yyyy" }}</small>
+        </div>
+      </div>
+
+      <div class="general-info" *ngIf="taskData">
+        <div class="card-blue">
+          <h2>{{ monthsSince }}</h2>
+          <p>Months</p>
+        </div>
+        <div class="card-blue">
+          <h2>{{ daysSince }}</h2>
+          <p>Days</p>
+        </div>
+        <div class="card-blue">
+          <h2>{{ hoursSince }}</h2>
+          <p>Hours</p>
+        </div>
+      </div>
+
+      <div class="task-details" *ngIf="!isEditMode">
+        <div class="description page-section">
+          <b>Description</b>
+          <p>{{ taskData.description }}</p>
+        </div>
+
+        <div class="status page-section">
+          <b>Status</b>
+          <p>{{ taskData.status }}</p>
+        </div>
+
+        <div class="priority page-section">
+          <b>Priority</b>
+          <p>{{ taskData.isPriority ? "Priority" : "Not Priority" }}</p>
+        </div>
+
+        <div class="estimated-time page-section">
+          <b>Estimated Time</b>
+          <p>{{ taskData.estimatedTime }} days</p>
+        </div>
+      </div>
+
+      <div class="needs-help button-wrapper" style="margin-top: 2em">
+        <button (click)="askForHelp()" class="button-tertiary">
+          Ask for help
+        </button>
+        <p
+          *ngIf="helpRequested === true"
+          style="color: var(--theme-green) !important; text-align: center"
+        >
+          Your help request has been sent
+        </p>
+      </div>
+
+      <div class="edit-mode" *ngIf="isEditMode">
+        <form [formGroup]="editTaskForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <app-input
+              [errors]="
+                !getControl('title').valid && getControl('title').touched
+                  ? getErrorMessage('title')
+                  : ''
+              "
+              [placeholder]="'Title'"
+              name="title"
+              type="text"
+              [label]="'Title'"
+              formControlName="title"
+            >
+            </app-input>
+          </div>
+          <div class="form-group">
+            <app-select
+              [placeholder]="'Select Team'"
+              [label]="'Select Team'"
+              [isRequired]="true"
+              [mandatory]="true"
+              [options]="teams"
+              formControlName="teamId"
+            ></app-select>
+          </div>
+
+          <div class="form-group priority-wrapper">
+            <label>Category <span>*</span></label>
+            <div class="priority-options">
+              <div
+                class="priority-card"
+                [ngClass]="{
+                  selected: getControl('isPriority').value === true
+                }"
+                (click)="setPriority(true)"
+              >
+                Priority
+              </div>
+              <div
+                class="priority-card"
+                [ngClass]="{
+                  selected: getControl('isPriority').value === false
+                }"
+                (click)="setPriority(false)"
+              >
+                Not Priority
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <app-select
+              [placeholder]="'Change Status'"
+              [label]="'Change Status'"
+              [options]="statusOptions"
+              [isRequired]="true"
+              [mandatory]="true"
+              [placeholder]="'Select Status'"
+              formControlName="status"
+            ></app-select>
+          </div>
+
+          <div class="form-group">
+            <app-input
+              [errors]="
+                !getControl('description').valid &&
+                getControl('description').touched
+                  ? getErrorMessage('description')
+                  : ''
+              "
+              [placeholder]="'Description'"
+              name="description"
+              type="text"
+              [label]="'Description'"
+              formControlName="description"
+            >
+            </app-input>
+          </div>
+          <div class="form-group">
+            <app-input
+              [errors]="
+                !getControl('estimatedTime').valid &&
+                getControl('estimatedTime').touched
+                  ? getErrorMessage('estimatedTime')
+                  : ''
+              "
+              [placeholder]="'Enter a number'"
+              name="estimatedTime"
+              type="number"
+              [label]="'Time passed - expected (in days)'"
+              formControlName="estimatedTime"
+            >
+            </app-input>
+          </div>
+          <div class="button-wrapper">
+            <button
+              class="button-primary"
+              [disabled]="disabledButton"
+              (click)="onSubmit()"
+            >
+              Finish
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

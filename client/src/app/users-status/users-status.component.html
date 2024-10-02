@@ -1,0 +1,6 @@
+<h2>Liste des employés</h2>
+<ul>
+  <li *ngFor="let user of users">
+    {{ user.firstname }} {{ user.lastname }} - Statut: {{ user.status }}
+  </li>
+</ul>

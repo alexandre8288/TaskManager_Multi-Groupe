@@ -1,0 +1,63 @@
+.date-and-notification {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.status {
+  width: 50px;
+  height: 20px;
+  color: white;
+  border-radius: 20px;
+}
+
+.status-container {
+  gap: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.status-wrapper,
+.status-container {
+  display: flex;
+  align-items: center;
+}
+
+.status-container {
+  margin-left: 1em;
+}
+
+.join-team-form {
+  display: flex;
+  align-items: center;
+
+  button {
+    margin-top: 1.3em;
+    margin-left: 1em;
+  }
+}
+
+.create-team-wrapper {
+  display: flex;
+  align-items: center;
+
+  button {
+    margin-bottom: 0.5rem;
+    margin-left: 1em;
+  }
+}
+
+.team {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  max-width: 30em;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+}

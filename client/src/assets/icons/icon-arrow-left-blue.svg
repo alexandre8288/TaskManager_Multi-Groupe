@@ -1,0 +1,19 @@
+<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="12" height="12" fill="#1E1E1E"/>
+<g id="Add Daily Task - Task Management">
+<g clip-path="url(#clip0_2_1246)">
+<rect x="-32" y="-81" width="375" height="812" rx="33" fill="#006EE9"/>
+<g id="button/primary/default">
+<g id="Button">
+<rect id="Rectangle 556" x="-12" y="-12" width="36" height="36" rx="10" fill="white"/>
+</g>
+<path id="Vector" d="M12 5.25H2.8725L7.065 1.0575L6 0L0 6L6 12L7.0575 10.9425L2.8725 6.75H12V5.25Z" fill="#006EE9"/>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_2_1246">
+<rect x="-32" y="-81" width="375" height="812" rx="33" fill="white"/>
+</clipPath>
+</defs>
+</svg>

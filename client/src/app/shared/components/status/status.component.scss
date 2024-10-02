@@ -1,0 +1,21 @@
+.status {
+  width: 50px;
+  height: 20px;
+  color: white;
+  border-radius: 20px;
+}
+
+.status-container {
+  gap: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.status-wrapper,
+.status-container {
+  display: flex;
+  align-items: center;
+}
+
+.status-container {
+  margin-left: 1em;
+}

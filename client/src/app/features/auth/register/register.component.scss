@@ -1,0 +1,45 @@
+@import "../../../../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../../../../scss/utilities/mixins";
+
+.register-wrapper {
+  @include flex-center-column;
+
+  @include media-breakpoint-up(md) {
+    width: 100%;
+  }
+}
+
+.back-button {
+  align-self: flex-start;
+}
+
+.header {
+  margin-top: 20%;
+  text-align: center;
+
+  @include media-breakpoint-up(md) {
+    margin-top: 5%;
+  }
+}
+
+.register-form {
+  margin-top: 3em;
+  width: 100%;
+
+  @include media-breakpoint-up(md) {
+    width: 50%;
+  }
+}
+
+.label {
+  display: flex;
+  justify-content: center;
+}
+
+.button-wrapper {
+  margin-top: 2em;
+}
+
+.button-primary {
+  width: 100%;
+}

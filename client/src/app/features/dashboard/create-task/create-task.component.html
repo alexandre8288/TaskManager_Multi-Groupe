@@ -1,0 +1,125 @@
+<div class="page-wrapper">
+  <div class="page-header">
+    <button class="button-secondary" (click)="back()">
+      <img src="/assets/icons/icon-arrow-left-blue.svg" />
+    </button>
+    <h4>Add Task</h4>
+  </div>
+
+  <div class="page-container">
+    <div class="form-wrapper">
+      <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <div class="date-inputs">
+            <div class="form-group">
+              <label for="startDate">Start Date</label>
+              <input
+                id="startDate"
+                type="date"
+                formControlName="startDate"
+                placeholder="YYYY-MM-DD"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="endDate">End Date</label>
+              <input
+                id="endDate"
+                type="date"
+                formControlName="endDate"
+                placeholder="YYYY-MM-DD"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <app-input
+            [errors]="
+              !getControl('title').valid && getControl('title').touched
+                ? getErrorMessage('title')
+                : ''
+            "
+            [placeholder]="'Title'"
+            name="title"
+            type="text"
+            [label]="'Title'"
+            formControlName="title"
+          >
+          </app-input>
+        </div>
+        <div class="form-group">
+          <app-select
+            [placeholder]="'Select Team'"
+            [label]="'Select Team'"
+            [isRequired]="true"
+            [mandatory]="true"
+            [options]="teams"
+            formControlName="teamId"
+          ></app-select>
+        </div>
+
+        <div class="form-group priority-wrapper">
+          <label>Category <span>*</span></label>
+          <div class="priority-options">
+            <div
+              class="priority-card"
+              [ngClass]="{ selected: getControl('isPriority').value === true }"
+              (click)="setPriority(true)"
+            >
+              Priority
+            </div>
+            <div
+              class="priority-card"
+              [ngClass]="{ selected: getControl('isPriority').value === false }"
+              (click)="setPriority(false)"
+            >
+              Not Priority
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <app-input
+            [errors]="
+              !getControl('description').valid &&
+              getControl('description').touched
+                ? getErrorMessage('description')
+                : ''
+            "
+            [placeholder]="'Description'"
+            name="description"
+            type="text"
+            [label]="'Description'"
+            formControlName="description"
+          >
+          </app-input>
+        </div>
+        <div class="form-group">
+          <app-input
+            [errors]="
+              !getControl('estimatedTime').valid &&
+              getControl('estimatedTime').touched
+                ? getErrorMessage('estimatedTime')
+                : ''
+            "
+            [placeholder]="'Enter a number'"
+            name="estimatedTime"
+            type="number"
+            [label]="'Time passed - expected (in days)'"
+            formControlName="estimatedTime"
+          >
+          </app-input>
+        </div>
+        <div class="button-wrapper">
+          <button
+            class="button-primary"
+            [disabled]="disabledButton || isSubmitting"
+            type="submit"
+          >
+            Create
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

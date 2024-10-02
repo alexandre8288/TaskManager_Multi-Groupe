@@ -1,0 +1,41 @@
+<div class="container-input">
+  <div class="section">
+    <label *ngIf="label" class="label" [innerHTML]="label"></label>
+    <ng-container *ngIf="!disabled && label.length">
+      <span class="mandatory" *ngIf="isRequired">*</span>
+      <span *ngIf="!isRequired">&nbsp;(falcultatif)</span>
+    </ng-container>
+  </div>
+  <div class="input-wrapper">
+    <div class="icon" *ngIf="icon">
+      <img [src]="icon" alt="icon" />
+    </div>
+    <input
+      class="input"
+      [ngClass]="{
+        error: showError,
+        'icon-included': icon,
+        'input--disabled': disabled
+      }"
+      [type]="type"
+      [placeholder]="placeholder"
+      [autocomplete]="autocomplete"
+      [value]="value"
+      [class.error]="errors"
+      (input)="onInput($event)"
+      [disabled]="disabled"
+    />
+  </div>
+  <div
+    class="input-error-notification"
+    *ngIf="control?.touched && control?.hasError('required')"
+  >
+    Ce champ est requis
+  </div>
+  <div
+    class="input-error-notification"
+    *ngIf="control?.touched && control?.hasError('emailBadFormat')"
+  >
+    Email non valide
+  </div>
+</div>

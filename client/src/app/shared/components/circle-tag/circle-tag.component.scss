@@ -1,0 +1,15 @@
+.outer-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 22px;
+  height: 22px;
+  border: 2px solid;
+  border-radius: 50%;
+}
+
+.inner-circle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}

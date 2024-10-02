@@ -1,0 +1,26 @@
+@import "../../../../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../../../../scss/utilities/mixins";
+
+.navbar-wrapper {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  height: 80px;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0px -1px 20px 0px rgba(0, 110, 233, 0.1);
+}
+
+.navbar-container {
+  @include flex-space-evenly;
+  width: 100%;
+  padding: 1em;
+
+  img {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

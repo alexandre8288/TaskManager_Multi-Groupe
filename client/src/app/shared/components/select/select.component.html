@@ -1,0 +1,45 @@
+<div class="select-wrapper">
+  <div class="label-wrapper">
+    <label *ngIf="label" class="label" [for]="getId()">{{ label }}</label>
+
+    <ng-container *ngIf="!disabled">
+      <span class="mandatory" *ngIf="mandatory">*</span>
+      <span *ngIf="mandatory === true && optionalLabelDisplayed === true">
+        &nbsp;(facultatif)
+      </span>
+    </ng-container>
+  </div>
+
+  <div class="custom-form-field">
+    <div
+      class="custom-select"
+      [attr.id]="getId()"
+      [ngClass]="{ 'select--disabled': disabled, error: showError }"
+      (click)="toggleDropdown()"
+      [attr.aria-expanded]="dropdownOpen"
+    >
+      <span class="placeholder-text">{{
+        selectedOption?.label || placeholder
+      }}</span>
+      <span class="dropdown-arrow">&#9662;</span>
+    </div>
+    <ul class="select-dropdown" *ngIf="dropdownOpen">
+      <li
+        *ngFor="let option of options"
+        [ngClass]="{
+          'select-option--selected': option.value === selectedOption?.value
+        }"
+        (click)="onSelect(option)"
+      >
+        {{ option.label }}
+      </li>
+    </ul>
+  </div>
+
+  <div
+    class="input-error-notification"
+    *ngIf="control?.touched && control?.hasError('required')"
+  >
+    Ce champ est requis
+  </div>
+</div>

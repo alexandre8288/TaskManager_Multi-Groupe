@@ -1,0 +1,56 @@
+<div class="page-wrapper">
+  <div class="page-header">
+    <button class="button-secondary" (click)="back()">
+      <img src="/assets/icons/icon-arrow-left-blue.svg" />
+    </button>
+    <h4>Team creation</h4>
+  </div>
+
+  <div class="page-container">
+    <div class="form-wrapper">
+      <form [formGroup]="createTeamForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <app-input
+            [errors]="
+              !getControl('teamName').valid && getControl('teamName').touched
+                ? getErrorMessage('teamName')
+                : ''
+            "
+            [placeholder]="'Team name'"
+            name="teamName"
+            type="text"
+            [label]="'Team name'"
+            formControlName="teamName"
+          >
+          </app-input>
+        </div>
+        <div class="form-group">
+          <app-input
+            class="input-description"
+            [errors]="
+              !getControl('teamDescription').valid &&
+              getControl('teamDescription').touched
+                ? getErrorMessage('teamDescription')
+                : ''
+            "
+            [placeholder]="'Description'"
+            name="teamDescription"
+            type="text"
+            [label]="'Description'"
+            formControlName="teamDescription"
+          >
+          </app-input>
+        </div>
+        <div class="button-wrapper">
+          <button
+            class="button-primary"
+            [disabled]="disabledButton"
+            (click)="onSubmit()"
+          >
+            Create
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.progress-container {
+  position: relative;
+  width: 100%;
+  background-color: #a9a2a2;
+  border-radius: 20px;
+  height: 20px;
+}
+
+.progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: var(--theme-primary);
+  text-align: center;
+  transition: width 0.3s ease-in-out;
+  color: white;
+}
+
+.progress-text {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+
+  small {
+    color: white !important;
+  }
+}

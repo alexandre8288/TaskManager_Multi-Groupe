@@ -1,0 +1,91 @@
+<div class="confirm-register-wrapper page-wrapper">
+  <div class="back-button">
+    <button class="button-primary" (click)="redirectToRegister()">
+      <img src="assets/icons/icon-arrow-left.svg" alt="back" />
+    </button>
+  </div>
+
+  <div class="header">
+    <h1>TEAM RNCP</h1>
+    <h4>Task Management App</h4>
+  </div>
+
+  <div
+    class="confirm-register-form"
+    [formGroup]="otpForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="label">
+      <p>Verify account</p>
+    </div>
+
+    <div class="image-container">
+      <img src="assets/images/two-people-mail.png" alt="Icon" />
+    </div>
+
+    <div class="call-to-action">
+      <p>Please enter the verification number we send to your email</p>
+    </div>
+
+    <div class="otp-fields">
+      <input
+        class="otp-field"
+        formControlName="digit1"
+        type="text"
+        maxlength="1"
+        (input)="onInput($event, 1)"
+        (focus)="onFocus(1)"
+        [ngClass]="{
+          'input-error':
+            otpForm.get('digit1')?.invalid && otpForm.get('digit1')?.touched
+        }"
+      />
+      <input
+        class="otp-field"
+        formControlName="digit2"
+        type="text"
+        maxlength="1"
+        (input)="onInput($event, 2)"
+        (focus)="onFocus(2)"
+        [ngClass]="{
+          'input-error':
+            otpForm.get('digit2')?.invalid && otpForm.get('digit2')?.touched
+        }"
+      />
+      <input
+        class="otp-field"
+        formControlName="digit3"
+        type="text"
+        maxlength="1"
+        (input)="onInput($event, 3)"
+        (focus)="onFocus(3)"
+        [ngClass]="{
+          'input-error':
+            otpForm.get('digit3')?.invalid && otpForm.get('digit3')?.touched
+        }"
+      />
+      <input
+        class="otp-field"
+        formControlName="digit4"
+        type="text"
+        maxlength="1"
+        (input)="onInput($event, 4)"
+        (focus)="onFocus(4)"
+        [ngClass]="{
+          'input-error':
+            otpForm.get('digit4')?.invalid && otpForm.get('digit4')?.touched
+        }"
+      />
+    </div>
+
+    <div class="button-wrapper">
+      <button
+        class="button-primary"
+        (click)="onSubmit()"
+        [disabled]="otpForm.invalid"
+      >
+        Confirm
+      </button>
+    </div>
+  </div>
+</div>

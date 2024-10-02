@@ -1,0 +1,36 @@
+@import "../../../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../../../scss/utilities/mixins";
+
+.notification {
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: flex-start;
+
+  p {
+    margin-left: 1em;
+  }
+}
+
+.notifications-container {
+  margin-top: 3em;
+}
+
+.notification-alternating {
+  background-color: #f1f7fe; /* Light blue background for even-indexed notifications */
+}
+
+.notification:not(.notification-alternating) {
+  background-color: white; /* White background for odd-indexed notifications */
+}
+
+.page-header {
+  background-color: var(--theme-primary);
+  padding: 1em;
+  margin: -1em;
+
+  @include media-breakpoint-up(md) {
+    margin: -1em -4em;
+  }
+}

@@ -1,0 +1,59 @@
+@import "../../../../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../../../../scss/utilities/mixins";
+
+.confirm-register-wrapper {
+  @include flex-center-column;
+
+  @include media-breakpoint-up(md) {
+    width: 100%;
+  }
+}
+
+.back-button {
+  align-self: flex-start;
+}
+
+.header {
+  margin-top: 20%;
+  text-align: center;
+
+  @include media-breakpoint-up(md) {
+    margin-top: 5%;
+  }
+}
+
+.confirm-register-form {
+  margin-top: 3em;
+  width: 100%;
+
+  @include media-breakpoint-up(md) {
+    width: 50%;
+  }
+}
+
+.label {
+  display: flex;
+  justify-content: center;
+}
+
+.image-container {
+  @include flex-center;
+}
+
+.otp-fields {
+  @include flex-space-between;
+}
+
+.otp-field {
+  width: 5em;
+  border: none;
+  border-bottom: 1px solid var(--theme-primary);
+  padding: 1em 0;
+  outline: none;
+  text-align: center;
+}
+
+.button-primary {
+  width: 100%;
+  margin-top: 2em;
+}

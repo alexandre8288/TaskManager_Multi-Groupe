@@ -1,0 +1,95 @@
+<div class="page-wrapper">
+  <div class="header">
+    <img src="assets/icons/icon-header.svg" alt="" />
+    <h1>{{ teamData.name | titlecase }}</h1>
+    <div class="button-wrapper">
+      <button
+        class="button-primary"
+        *ngIf="user.role === 'Admin' && !isManageMode"
+        (click)="toggleManageMode()"
+      >
+        Manage
+      </button>
+      <button
+        class="button-primary"
+        *ngIf="user.role === 'Admin' && isManageMode"
+        (click)="toggleManageMode()"
+      >
+        Finish
+      </button>
+    </div>
+  </div>
+  <div class="page-container">
+    <div class="page-content">
+      <div class="starting-info">
+        <!-- <div class="start-date">
+      <b>start</b>
+      <small>{{ teamData.startDate | date : "MMM d yyyy" }}</small>
+    </div> -->
+        <div class="code">
+          <b>Code</b>
+          <h3>{{ teamData.code }}</h3>
+        </div>
+        <!-- <div class="end-date">
+      <b>End</b>
+      <small>{{ teamData.endDate | date : "MMM d yyyy" }}</small>
+    </div> -->
+      </div>
+
+      <div class="general-info" *ngIf="teamData && taskCount !== undefined">
+        <div class="card-blue">
+          <h2>{{ memberCount }}</h2>
+          <p>members</p>
+        </div>
+        <div class="card-blue">
+          <h2>{{ taskCount }}</h2>
+          <p>tasks</p>
+        </div>
+        <div class="card-blue">
+          <h2>{{ tasksWithIssuesCount }}</h2>
+          <p>issues</p>
+        </div>
+      </div>
+
+      <div class="description">
+        <b>Description</b>
+        <p>{{ teamData.description }}</p>
+      </div>
+
+      <div class="progress-bar-container">
+        <b>Progress</b>
+        <div class="progress">
+          <app-progress-bar
+            [percentage]="calculateProgress()"
+          ></app-progress-bar>
+        </div>
+      </div>
+
+      <div class="members">
+        <b>Members</b>
+
+        <div class="members-list">
+          <div
+            class="custom-card member-card"
+            *ngFor="let member of teamMembers"
+          >
+            <p>{{ member.user.firstname }} {{ member.user.lastname }}</p>
+            <app-circle-tag
+              [outsideColor]="getStatusColor(member.user.status)"
+              [insideColor]="getStatusColor(member.user.status)"
+              *ngIf="!isManageMode"
+            ></app-circle-tag>
+
+            <img
+              *ngIf="isManageMode"
+              class="trash-button"
+              (click)="removeMember(member.user.id)"
+              src="assets/icons/icon-trash.svg"
+              alt="Remove Member"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

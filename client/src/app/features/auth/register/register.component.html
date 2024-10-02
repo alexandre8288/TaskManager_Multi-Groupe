@@ -1,0 +1,109 @@
+<div class="register-wrapper page-wrapper">
+  <div class="back-button">
+    <button class="button-primary" (click)="redirectToLogin()">
+      <img src="assets/icons/icon-arrow-left.svg" alt="back" />
+    </button>
+  </div>
+
+  <div class="header">
+    <h1>TEAM RNCP</h1>
+    <h4>Task Management App</h4>
+  </div>
+
+  <div class="register-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="label">
+      <p>Create your account</p>
+    </div>
+    <div class="form-group">
+      <app-input
+        [errors]="
+          !getControl('firstname').valid && getControl('firstname').touched
+            ? getErrorMessage('firstname')
+            : ''
+        "
+        [placeholder]="'Firstname'"
+        name="firstname"
+        type="text"
+        [label]="'Firstname'"
+        formControlName="firstname"
+        [icon]="iconUsername"
+      >
+      </app-input>
+    </div>
+    <div class="form-group">
+      <app-input
+        [errors]="
+          !getControl('lastname').valid && getControl('lastname').touched
+            ? getErrorMessage('lastname')
+            : ''
+        "
+        [placeholder]="'Lastname'"
+        name="lastname"
+        type="text"
+        [label]="'Lastname'"
+        formControlName="lastname"
+        [icon]="iconUsername"
+      >
+      </app-input>
+    </div>
+    <div class="form-group">
+      <app-input
+        [errors]="
+          !getControl('email').valid && getControl('email').touched
+            ? getErrorMessage('email')
+            : ''
+        "
+        [placeholder]="'Email'"
+        name="email"
+        type="text"
+        [label]="'Email'"
+        formControlName="email"
+        [icon]="iconEmail"
+      >
+      </app-input>
+    </div>
+    <div class="form-group">
+      <app-input
+        [errors]="
+          !getControl('password').valid && getControl('password').touched
+            ? getErrorMessage('password')
+            : ''
+        "
+        [placeholder]="'Password'"
+        name="password"
+        type="password"
+        [label]="'Password'"
+        formControlName="password"
+        [icon]="iconPassword"
+      >
+      </app-input>
+    </div>
+    <div class="form-group">
+      <app-input
+        [errors]="
+          !getControl('confirmPassword').valid &&
+          getControl('confirmPassword').touched
+            ? getErrorMessage('confirmPassword')
+            : ''
+        "
+        [placeholder]="'Confirm Password'"
+        name="confirmPassword"
+        type="password"
+        [label]="'Confirm Password'"
+        formControlName="confirmPassword"
+        [icon]="iconPassword"
+      >
+      </app-input>
+    </div>
+
+    <div class="button-wrapper">
+      <button
+        class="button-primary"
+        [disabled]="disabledButton"
+        (click)="onSubmit()"
+      >
+        Register
+      </button>
+    </div>
+  </div>
+</div>

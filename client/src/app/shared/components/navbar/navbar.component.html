@@ -1,0 +1,18 @@
+<div class="navbar-wrapper">
+  <div class="navbar-container">
+    <div
+      class="navbar-item"
+      *ngFor="let item of navbarItems; let i = index"
+      [routerLink]="item.route"
+      [ngClass]="{ active: item.isActive }"
+    >
+      <div class="item-container">
+        <img
+          src="{{ item.isActive ? item.iconActive : item.iconDefault }}"
+          alt="{{ item.displayName }}"
+          [ngClass]="{ active: item.isActive }"
+        />
+      </div>
+    </div>
+  </div>
+</div>

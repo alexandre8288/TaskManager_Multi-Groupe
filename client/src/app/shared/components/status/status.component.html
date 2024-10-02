@@ -1,0 +1,16 @@
+<div class="status-wrapper">
+  <h3>Current status:</h3>
+  <div class="status-container">
+    <div
+      class="status"
+      [ngStyle]="{
+        'background-color': getStatusColor(user?.status || 'available')
+      }"
+    ></div>
+    <app-select
+      [placeholder]="'Select status'"
+      [options]="(statuses$ | async) || []"
+      (ngModelChange)="updateStatus($event)"
+    ></app-select>
+  </div>
+</div>

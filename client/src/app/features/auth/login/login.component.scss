@@ -1,0 +1,50 @@
+@import "../../../../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../../../../scss/utilities/mixins";
+
+.login-wrapper {
+  @include flex-center-column;
+
+  @include media-breakpoint-up(md) {
+    width: 100%;
+  }
+}
+
+.header {
+  margin-top: 20%;
+  text-align: center;
+
+  @include media-breakpoint-up(md) {
+    margin-top: 5%;
+  }
+}
+
+.login-form {
+  margin-top: 3em;
+  width: 100%;
+
+  @include media-breakpoint-up(md) {
+    width: 50%;
+  }
+}
+
+.label {
+  display: flex;
+  justify-content: center;
+}
+
+.forgotten-password {
+  text-align: end;
+}
+
+.button-wrapper {
+  margin-top: 2em;
+}
+
+.button-primary {
+  width: 100%;
+}
+
+.register {
+  @include flex-center;
+  margin-top: 1em;
+}

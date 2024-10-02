@@ -1,0 +1,74 @@
+<div class="page-wrapper">
+  <div class="page-container">
+    <div class="page-content">
+      <div class="date-and-notification">
+        <div class="date">
+          <small>{{ currentDate | date : "EEEE, MMMM d yyyy" }}</small>
+        </div>
+        <div class="notification">
+          <a href="/notifications"><img src="assets/icons/icon-bell.svg" /></a>
+        </div>
+      </div>
+
+      <div class="header">
+        <h2>Welcome {{ user?.firstname }}</h2>
+        <h4>Have a nice day!</h4>
+      </div>
+
+      <app-status [user]="user"></app-status>
+
+      <div class="join-team-wrapper page-section">
+        <h3>Join a team</h3>
+
+        <form class="join-team-form" [formGroup]="teamCode">
+          <app-input
+            [errors]="
+              !getControl('code')?.valid && getControl('code')?.touched
+                ? getErrorMessage('code')
+                : ''
+            "
+            [placeholder]="'Enter a code'"
+            name="code"
+            type="code"
+            [label]="'Team code'"
+            formControlName="code"
+          >
+          </app-input>
+          <button
+            class="btn btn-primary btn-shadow"
+            [disabled]="!teamCode.valid"
+            (click)="joinTeam()"
+          >
+            Join
+          </button>
+        </form>
+      </div>
+
+      <div
+        *ngIf="user?.role === 'Admin'"
+        class="create-team-wrapper page-section"
+      >
+        <h3>Create a team</h3>
+
+        <button
+          class="btn btn-primary btn-shadow"
+          (click)="redirectToCreateTeam()"
+        >
+          Create
+        </button>
+      </div>
+
+      <div class="teams page-section" *ngIf="teams.length > 0">
+        <h3>My teams</h3>
+        <div
+          class="team custom-card"
+          *ngFor="let team of teams"
+          (click)="viewTeam(team)"
+        >
+          <p class="tag">{{ team.name | uppercase }}</p>
+          <app-circle-tag></app-circle-tag>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

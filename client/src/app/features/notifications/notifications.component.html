@@ -1,0 +1,26 @@
+<div class="page-wrapper">
+  <div class="page-header">
+    <button class="button-secondary back" (click)="back()">
+      <img src="/assets/icons/icon-arrow-left-blue.svg" alt="" />
+    </button>
+  </div>
+
+  <div class="notifications-container">
+    <div
+      *ngFor="let notification of notifications; let i = index"
+      [ngClass]="{
+        notification: true,
+        'notification-alternating': i % 2 === 0
+      }"
+    >
+      <img src="assets/icons/icon-alert.svg" alt="" />
+      <p>
+        <b
+          >{{ notification.user?.firstname }} {{ notification.user?.lastname }}
+        </b>
+        requested help for the task " <b>{{ notification.title }}"</b> in team
+        <b>"{{ notification.team?.name }}"</b>.
+      </p>
+    </div>
+  </div>
+</div>

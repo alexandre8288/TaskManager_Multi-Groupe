@@ -1,0 +1,63 @@
+<div class="page-wrapper">
+  <div class="date-and-notification">
+    <div class="date">
+      <small>{{ currentDate | date : "EEEE, MMMM d yyyy" }}</small>
+    </div>
+    <div class="notification">
+      <a href="/notifications"><img src="assets/icons/icon-bell.svg" /></a>
+    </div>
+  </div>
+
+  <div class="header">
+    <h2>Welcome {{ user?.firstname }}</h2>
+    <h4>Have a nice day!</h4>
+  </div>
+
+  <div class="add-task">
+    <h3>Add task:</h3>
+    <button class="btn btn-primary btn-shadow" (click)="redirectToCreateTask()">
+      Add task
+    </button>
+  </div>
+
+  <div class="priority-tasks">
+    <h3>My Priority Tasks</h3>
+    <div class="priority-cards-container">
+      <div class="color-card" *ngFor="let task of topPriorityTasks()">
+        <div class="card-top">
+          <img
+            (click)="removeTask(task)"
+            src="assets/icons/icon-cross.svg"
+            alt=""
+          />
+        </div>
+        <div class="card-container" (click)="viewTaskDetails(task)">
+          <div class="title"></div>
+          <p>{{ task.title }}</p>
+        </div>
+        <div class="status tag">
+          <small>Status:</small>
+          <div
+            class="color-status"
+            [ngStyle]="{ 'background-color': getTaskStatusColor(task.status) }"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="other-tasks">
+    <h3>Other tasks</h3>
+    <div class="custom-card task" *ngFor="let task of otherTasks()">
+      <div class="task-container" (click)="viewTaskDetails(task)">
+        <p>{{ task.title }}</p>
+        <app-circle-tag></app-circle-tag>
+      </div>
+      <img
+        src="assets/icons/icon-trash.svg"
+        alt=""
+        (click)="removeTask(task)"
+      />
+    </div>
+  </div>
+</div>
