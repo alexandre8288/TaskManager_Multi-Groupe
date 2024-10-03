@@ -38,7 +38,6 @@ CREATE TABLE Tasks (
     estimatedTime INT,
     totalTime INT DEFAULT 0,
     isPriority BOOLEAN DEFAULT FALSE,
-    needsHelp BOOLEAN DEFAULT FALSE,
     teamId INT,
     userId INT,
     FOREIGN KEY (teamId) REFERENCES Teams(id),
@@ -56,7 +55,7 @@ CREATE TABLE Comments (
 
 CREATE TABLE Alerts (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    status VARCHAR(50),
+    status ENUM('New', 'In Progress', 'Resolved', 'Closed') DEFAULT 'New',
     taskId INT,
     teamId INT,
     userId INT,
@@ -65,9 +64,11 @@ CREATE TABLE Alerts (
     FOREIGN KEY (userId) REFERENCES Users(id)
 );
 
+-- Table d'historique des alertes
 CREATE TABLE History_alerts (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    status VARCHAR(50),
+    status ENUM('New', 'In Progress', 'Resolved', 'Closed') DEFAULT 'New',
+    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- enregistre la date et l'heure de chaque mise à jour
     alertId INT,
     userId INT,
     FOREIGN KEY (alertId) REFERENCES Alerts(id),
@@ -90,9 +91,9 @@ INSERT INTO User_team (userId, teamId) VALUES
 (2, 2);
 
 -- Ajout des tâches avec les dates et états
-INSERT INTO Tasks (title, description, status, startDate, endDate, estimatedTime, totalTime, teamId, userId) VALUES 
-('Develop Feature A', 'Description of Feature A', 'In Progress', '2023-07-01', NULL, 8, 5, 1, 1),
-('Market Campaign X', 'Description of Campaign X', 'To Do', '2023-07-05', NULL, 10, 0, 2, 2);
+INSERT INTO Tasks (title, description, status, startDate, endDate, estimatedTime, totalTime, isPriority, teamId, userId) VALUES 
+('Develop Feature A', 'Description of Feature A', 'In Progress', '2023-07-01', NULL, 8, 5, FALSE, 1, 1),
+('Market Campaign X', 'Description of Campaign X', 'To Do', '2023-07-05', NULL, 10, 0, TRUE, 2, 2);
 
 -- Ajout des commentaires
 INSERT INTO Comments (text, taskId, userId) VALUES 
@@ -104,7 +105,14 @@ INSERT INTO Alerts (status, taskId, teamId, userId) VALUES
 ('New', 1, 1, 1),
 ('New', 2, 2, 2);
 
--- Ajout de l'historique des alertes
+-- Ajout de l'historique des alertes avec l'état initial de chaque alerte
 INSERT INTO History_alerts (status, alertId, userId) VALUES 
-('Created', 1, 1),
-('Created', 2, 2);
+('New', 1, 1),
+('New', 2, 2);
+
+-- Exemple de mise à jour du statut d'une alerte et ajout dans l'historique
+UPDATE Alerts SET status = 'In Progress' WHERE id = 1;
+INSERT INTO History_alerts (status, alertId, userId) VALUES ('In Progress', 1, 1);
+
+UPDATE Alerts SET status = 'Resolved' WHERE id = 2;
+INSERT INTO History_alerts (status, alertId, userId) VALUES ('Resolved', 2, 2);
