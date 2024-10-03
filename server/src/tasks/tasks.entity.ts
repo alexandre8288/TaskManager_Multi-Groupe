@@ -33,9 +33,6 @@ export class Task {
   @Column({ type: 'boolean', default: false })
   isPriority: boolean;
 
-  @Column({ type: 'boolean', default: false })
-  needsHelp: boolean;
-
   @ManyToOne(() => Team, team => team.tasks)
   team: Team;
 

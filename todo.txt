@@ -1,0 +1,4 @@
+Supprimer les redondances dans les tables de la bdd
+Afficher le temps des taches en m/s/j plutot 
+Finir les pages du front
+Régler le problème de suppression du token lors du logout

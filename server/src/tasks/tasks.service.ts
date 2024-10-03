@@ -6,6 +6,7 @@ import { Task } from './tasks.entity';
 import { Comment } from '../comments/comments.entity';
 import { User } from '../user/user.entity';
 import { Team } from 'src/teams/teams.entity';
+import { Alert } from 'src/alerts/alerts.entity';
 import { from, Observable } from 'rxjs';
 
 @Injectable()
@@ -19,6 +20,8 @@ export class TasksService {
     private userRepository: Repository<User>,
     @InjectRepository(Team)
     private teamRepository: Repository<Team>,
+    @InjectRepository(Alert)
+    private alertsRepository: Repository<Alert>,
   ) {}
 
   async createTask(
@@ -96,8 +99,7 @@ export class TasksService {
     return this.tasksRepository.save(task);
   }
   
-  
-
+  // Temps passé sur une tâche
   async logTime(taskId: number, timeSpent: number): Promise<{task: Task, message: string}> {
     const task = await this.tasksRepository.findOneBy({ id: taskId });
 
@@ -106,10 +108,10 @@ export class TasksService {
         return { task, message: "Cannot log time because the task has not started yet." };
     }
 
-    // Ajoutez le temps passé à totalTime
+    // Ajoute le temps passé à totalTime
     task.totalTime += timeSpent;
 
-    // Si la tâche n'est pas marquée comme terminée (pas de endDate), calculez la durée depuis la startDate
+    // Si la tâche n'est pas marquée comme terminée (pas de endDate), calcule la durée depuis la startDate
     if (!task.endDate) {
         const now = new Date();
         const startDate = new Date(task.startDate);
@@ -151,7 +153,19 @@ export class TasksService {
     return this.tasksRepository.findOneBy({ id });
   }
 
+  // Récupérer toutes les tâches avec une alerte active
   async findTaskNeedHelp(): Promise<Task[]> {
-    return this.tasksRepository.find({ where: { needsHelp: true }, relations: ['user', 'team'] });
+    const activeAlerts = await this.alertsRepository.find({
+      where: [
+        { status: 'New' },
+        { status: 'In Progress' },
+      ],
+      relations: ['task'],
+    });
+  
+    const tasksWithActiveAlerts = activeAlerts.map(alert => alert.task);
+  
+    return tasksWithActiveAlerts;
   }
+  
 }
